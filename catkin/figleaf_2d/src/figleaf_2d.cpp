@@ -191,7 +191,7 @@ int main(int argc, char** argv)
     ros::spin();
     return 0;
   } else {
-    std::cout<<"ERROR:\tusage - ros_to_opencv <ros_image_topic>"<<std::endl;
+    std::cout<<"ERROR:\tusage - figleaf_2d <ros_image_topic>"<<std::endl;
     return 1;
   }
 }
