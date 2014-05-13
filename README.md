@@ -10,4 +10,4 @@ Privacy tools for robotics.
 
 **For UW CSE users**
 
-For help setting up ROS, see [https://sites.google.com/site/humancenteredrobotics/internal/set-up-to-work-on-pbd-in-014].
+For help setting up ROS, see https://sites.google.com/site/humancenteredrobotics/internal/set-up-to-work-on-pbd-in-014 .
