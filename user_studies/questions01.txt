@@ -1,0 +1,112 @@
+Flight 1 benevolent:
+
+How difficult was the task, on a scale of 1 (very easy) to 5 (very difficult)? [ ]
+
+How frustrated were you while performing the task, on a scale of 1 (not at all frustrated) to 5 (very frustrated)? [ ]
+
+How successful do you think you were in performing the task, on a scale of 1 (not at all successful) to 5 (very successful)? [ ]
+
+Did you recognize any objects? If so, please list them here:
+
+Could you read any text on any of the objects? If so, please write the text here:
+
+Did any of the objects appear to belong to a man? If so, please list them here:
+
+Did any of the objects appear to belong to a woman? If so, please list them here:
+
+Did any of the objects appear to belong to a child? If so, please list them here:
+
+
+Flight 1 adversarial:
+
+How difficult was the task, on a scale of 1 (very easy) to 5 (very difficult)? [ ]
+
+How frustrated were you while performing the task, on a scale of 1 (not at all frustrated) to 5 (very frustrated)? [ ]
+
+How successful do you think you were in performing the task, on a scale of 1 (not at all successful) to 5 (very successful)? [ ]
+
+Did you recognize any objects? If so, please list them here:
+
+Could you read any text on any of the objects? If so, please write the text here:
+
+Did any of the objects appear to belong to a man? If so, please list them here:
+
+Did any of the objects appear to belong to a woman? If so, please list them here:
+
+Did any of the objects appear to belong to a child? If so, please list them here:
+
+
+Flight 2 benevolent:
+
+How difficult was the task, on a scale of 1 (very easy) to 5 (very difficult)? [ ]
+
+How frustrated were you while performing the task, on a scale of 1 (not at all frustrated) to 5 (very frustrated)? [ ]
+
+How successful do you think you were in performing the task, on a scale of 1 (not at all successful) to 5 (very successful)? [ ]
+
+Did you recognize any objects? If so, please list them here:
+
+Could you read any text on any of the objects? If so, please write the text here:
+
+Did any of the objects appear to belong to a man? If so, please list them here:
+
+Did any of the objects appear to belong to a woman? If so, please list them here:
+
+Did any of the objects appear to belong to a child? If so, please list them here:
+
+
+Flight 2 adversarial:
+
+How difficult was the task, on a scale of 1 (very easy) to 5 (very difficult)? [ ]
+
+How frustrated were you while performing the task, on a scale of 1 (not at all frustrated) to 5 (very frustrated)? [ ]
+
+How successful do you think you were in performing the task, on a scale of 1 (not at all successful) to 5 (very successful)? [ ]
+
+Did you recognize any objects? If so, please list them here:
+
+Could you read any text on any of the objects? If so, please write the text here:
+
+Did any of the objects appear to belong to a man? If so, please list them here:
+
+Did any of the objects appear to belong to a woman? If so, please list them here:
+
+Did any of the objects appear to belong to a child? If so, please list them here:
+
+
+Flight 3 benevolent:
+
+How difficult was the task, on a scale of 1 (very easy) to 5 (very difficult)? [ ]
+
+How frustrated were you while performing the task, on a scale of 1 (not at all frustrated) to 5 (very frustrated)? [ ]
+
+How successful do you think you were in performing the task, on a scale of 1 (not at all successful) to 5 (very successful)? [ ]
+
+Did you recognize any objects? If so, please list them here:
+
+Could you read any text on any of the objects? If so, please write the text here:
+
+Did any of the objects appear to belong to a man? If so, please list them here:
+
+Did any of the objects appear to belong to a woman? If so, please list them here:
+
+Did any of the objects appear to belong to a child? If so, please list them here:
+
+
+Flight 3 adversarial:
+
+How difficult was the task, on a scale of 1 (very easy) to 5 (very difficult)? [ ]
+
+How frustrated were you while performing the task, on a scale of 1 (not at all frustrated) to 5 (very frustrated)? [ ]
+
+How successful do you think you were in performing the task, on a scale of 1 (not at all successful) to 5 (very successful)? [ ]
+
+Did you recognize any objects? If so, please list them here:
+
+Could you read any text on any of the objects? If so, please write the text here:
+
+Did any of the objects appear to belong to a man? If so, please list them here:
+
+Did any of the objects appear to belong to a woman? If so, please list them here:
+
+Did any of the objects appear to belong to a child? If so, please list them here:
