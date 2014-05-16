@@ -1,14 +1,14 @@
 /* 
+   Daniel J. Butler (djbutler@cs.washington.edu)
+   05/04/2014
+   
+   Based on code by:
 
    Andy McEvoy
    michael.mcevoy@colorado.edu
-
    12 - June - 2013
-
    Converts a ROS image stream into an OpenCV image stream
-
    http://correll.cs.colorado.edu/?p=3064 (accessed 05/04/2014 by djb)
-
 */
 
 #include <ros/ros.h>
@@ -48,10 +48,10 @@ class ImageConverter
   image_transport::Publisher image_pub_;
   
 public:
-  ImageConverter(char* ros_image_stream)
+  ImageConverter(char* ros_image_stream, char* ros_output_stream)
     : it_(nh_)
   {
-    image_pub_ = it_.advertise("correll_ros2opencv", 1);
+    image_pub_ = it_.advertise(ros_output_stream, 1);
     image_sub_ = it_.subscribe(ros_image_stream, 1, &ImageConverter::imageCb, this);
 
     cv::namedWindow(WINDOW);
@@ -185,13 +185,13 @@ public:
 
 int main(int argc, char** argv)
 {
-  if (argc==2) {
-    ros::init(argc, argv, "correll_image_converter");
-    ImageConverter ic(argv[1]);
+  if (argc==3) {
+    ros::init(argc, argv, "figleaf_image_converter");
+    ImageConverter ic(argv[1], argv[2]);
     ros::spin();
     return 0;
   } else {
-    std::cout<<"ERROR:\tusage - figleaf_2d <ros_image_topic>"<<std::endl;
+    std::cout<<"ERROR:\tusage - figleaf_2d <ros_image_topic> <ros_output_topic>"<<std::endl;
     return 1;
   }
 }
