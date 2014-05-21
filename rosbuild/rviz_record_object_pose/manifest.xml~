@@ -1,0 +1,19 @@
+<package>
+  <description brief="rviz_record_object_pose">
+
+     rviz_record_object_pose
+
+  </description>
+  <author>Dan Butler</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/rviz_record_object_pose</url>
+  <depend package="rviz"/>
+  <depend package="message_generation"/>
+  <depend package="pr2_pbd_speech_recognition"/>
+  <export>
+    <rviz plugin="${prefix}/plugin_description.xml" />
+  </export>
+</package>
+
+
