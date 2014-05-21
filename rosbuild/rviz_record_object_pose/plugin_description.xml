@@ -1,0 +1,9 @@
+<library path="lib/librviz_record_object_pose">
+  <class name="rviz_record_object_pose/Object Recorder Panel"
+         type="rviz_record_object_pose::ObjectRecorderPanel"
+         base_class_type="rviz::Panel">
+    <description>
+      A panel which publishes the current camera pose.
+    </description>
+  </class>
+</library>

@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/djbutler/rosbuild_ws/rviz_record_object_pose/build/devel/setup.sh
