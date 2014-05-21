@@ -1,0 +1,16 @@
+<package>
+  <description brief="rviz_arrows">
+
+     rviz_arrows
+
+  </description>
+  <author>Dan Butler</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/rviz_arrows</url>
+  <depend package="roscpp"/>
+  <depend package="visualization_msgs"/>
+
+</package>
+
+
