@@ -1,0 +1,8 @@
+ROS_ROOT=/opt/ros/groovy/share/ros
+ROS_PACKAGE_PATH=/home/djbutler/rosbuild_ws/:/home/djbutler/catkin_ws/src:/opt/ros/groovy/share:/opt/ros/groovy/stacks
+ROS_MASTER_URI=http://c1:11311
+ROS_TEST_RESULTS_DIR=/home/djbutler/catkin_ws/build/test_results
+ROSLISP_PACKAGE_DIRECTORIES=/home/djbutler/catkin_ws/devel/share/common-lisp
+ROS_DISTRO=groovy
+ROS_IP=128.208.5.172
+ROS_ETC_DIR=/opt/ros/groovy/etc/ros
