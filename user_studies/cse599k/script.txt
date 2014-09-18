@@ -1,0 +1,45 @@
+PRE:
+[ ] ssh into c1, robot claim, robot start
+[ ] cd figleaf && ./scripts/kinect_blur.sh
+[ ] roslaunch pr2_interactive_manipulation robot
+[ ] cd figleaf && ./scripts/rviz_condition.sh x2
+[ ] bring up survey webpage on laptop
+[ ] cd figleaf && ./scripts/reset_robot.sh
+
+DURING:
+[ ] start camcorder
+[ ] robot tutorial
+	this is how you rotate the view, now you try
+	this is how you zoom in and out, now you try
+	this is how you move the gripper, now you try
+	this is how you rotate the gripper, now you try
+	this is how you open and close the gripper, now you try
+	this is how you rotate the shoulder, now you try
+
+| FLIGHT #1
+| [ ] initial instructions (placing task)
+| ""
+| [ ] start timer: cd figleaf && ./scripts/start_timer.sh
+| [ ] observe + take notes
+| [ ] stop timer, record time on participant sheet
+| [ ] give quiz instructions
+| ""
+| [ ] start quiz
+| 	during quiz:
+|	[ ] reset rviz to overhead view
+|	[ ] minimize rviz
+|	[ ] cd figleaf && ./scripts/reset_robot.sh
+|	[ ] reset flight #1
+| [ ] give instructions for adversarial task+quiz
+| ""
+| [ ] start timer: cd figleaf && ./scripts/start_timer.sh
+| [ ] observe + take notes
+| [ ] stop timer, record time on participant sheet
+| [ ] after adversarial task+quiz:
+|	[ ] close rviz
+|	[ ] cd figleaf && ./scripts/reset_robot.sh
+|	[ ] cd figleaf && ./scripts/rviz_condition.sh x2
+|	[ ] setup flight #2
+
+
+POST:
