@@ -1308,15 +1308,15 @@ Visualization Manager:
     Current:
       Class: rviz_animated_view_controller/Animated
       Control Mode: Orbit
-      Distance: 2.49066
+      Distance: 1.50083
       Eye:
-        X: 0.094925
-        Y: 0.00519626
-        Z: 3.02576
+        X: 0.613529
+        Y: 0.0392474
+        Z: 2.37465
       Focus:
-        X: 0.570537
-        Y: 0.0302668
-        Z: 0.581059
+        X: 0.623095
+        Y: 0.0146846
+        Z: 0.874047
       Maintain Vertical Axis: true
       Mouse Enabled: true
       Name: Current View
@@ -1325,9 +1325,9 @@ Visualization Manager:
       Target Frame: <Fixed Frame>
       Transition Time: 0.5
       Up:
-        X: 0
-        Y: 0
-        Z: 1
+        X: 0.0269437
+        Y: 0.0163816
+        Z: 0.999503
       Value: Animated (rviz_animated_view_controller)
     Saved: ~
 Window Geometry:
@@ -1352,5 +1352,5 @@ Window Geometry:
   Views:
     collapsed: false
   Width: 1805
-  X: 50
+  X: 43
   Y: 45

@@ -1,15 +1,16 @@
 Panels:
   - Class: rviz/Displays
-    Help Height: 80
+    Help Height: 0
     Name: Displays
     Property Tree Widget:
       Expanded:
         - /Interactive Markers1
-        - /Head Camera1
-        - /Kinect Stream1
-        - /Image1
-      Splitter Ratio: 0.690544
-    Tree Height: 222
+        - /Kinect Stream1/Occlusion Compensation1
+        - /Panels1
+        - /Panels1/CameraFocusFrontend1
+        - /PublishClickCamera1
+      Splitter Ratio: 0.371324
+    Tree Height: 934
   - Class: rviz/Views
     Expanded:
       - /Current View1
@@ -19,7 +20,7 @@ Panels:
     Experimental: false
     Name: Time
     SyncMode: 0
-    SyncSource: Kinect Stream
+    SyncSource: Head Camera
   - Class: rviz/Tool Properties
     Expanded:
       - /Navigate To1
@@ -28,6 +29,8 @@ Panels:
       - /2D Pose Estimate1
     Name: Tool Properties
     Splitter Ratio: 0.5
+  - Class: rviz_record_object_pose/Object Recorder Panel
+    Name: Object Recorder Panel
 Visualization Manager:
   Class: ""
   Displays:
@@ -52,16 +55,16 @@ Visualization Manager:
     - Class: rviz/Group
       Displays:
         - Class: rviz/InteractiveMarkers
-          Enable Transparency: false
-          Enabled: true
+          Enable Transparency: true
+          Enabled: false
           Name: Pick Up Objects
           Show Axes: false
           Show Descriptions: true
-          Show Visual Aids: true
+          Show Visual Aids: false
           Update Topic: /interactive_manipulation/update
-          Value: true
+          Value: false
         - Class: rviz/InteractiveMarkers
-          Enable Transparency: false
+          Enable Transparency: true
           Enabled: true
           Name: PR2 Teleop (Transparent)
           Show Axes: false
@@ -70,32 +73,66 @@ Visualization Manager:
           Update Topic: /pr2_marker_control_transparent/update
           Value: true
         - Class: rviz/InteractiveMarkers
-          Enable Transparency: false
-          Enabled: true
+          Enable Transparency: true
+          Enabled: false
           Name: Interactive Gripper
-          Show Axes: false
-          Show Descriptions: false
-          Show Visual Aids: true
-          Update Topic: /interactive_gripper/update
-          Value: true
-        - Class: rviz/InteractiveMarkers
-          Enable Transparency: false
-          Enabled: true
-          Name: PR2 Nav
           Show Axes: false
           Show Descriptions: true
           Show Visual Aids: true
-          Update Topic: /pr2_nav_marker_control/update
-          Value: true
+          Update Topic: /interactive_gripper/update
+          Value: false
         - Class: rviz/InteractiveMarkers
-          Enable Transparency: false
+          Enable Transparency: true
+          Enabled: false
+          Name: PR2 Nav
+          Show Axes: false
+          Show Descriptions: true
+          Show Visual Aids: false
+          Update Topic: /pr2_nav_marker_control/update
+          Value: false
+        - Class: rviz/InteractiveMarkers
+          Enable Transparency: true
           Enabled: false
           Name: PR2 Teleop
           Show Axes: false
           Show Descriptions: true
-          Show Visual Aids: true
+          Show Visual Aids: false
           Update Topic: /pr2_marker_control/update
           Value: false
+        - Class: rviz/InteractiveMarkers
+          Enable Transparency: true
+          Enabled: true
+          Name: WorldObjects
+          Show Axes: false
+          Show Descriptions: true
+          Show Visual Aids: false
+          Update Topic: /world_objects/update
+          Value: true
+        - Class: rviz/InteractiveMarkers
+          Enable Transparency: true
+          Enabled: true
+          Name: ActionSteps
+          Show Axes: false
+          Show Descriptions: true
+          Show Visual Aids: false
+          Update Topic: /programmed_actions/update
+          Value: true
+        - Class: rviz/Marker
+          Enabled: true
+          Marker Topic: visualization_marker
+          Name: Marker
+          Namespaces:
+            "": true
+          Queue Size: 100
+          Value: true
+        - Class: rviz/MarkerArray
+          Enabled: true
+          Marker Topic: visualization_marker_array
+          Name: ActionLinks
+          Namespaces:
+            {}
+          Queue Size: 100
+          Value: true
       Enabled: true
       Name: Interactive Markers
     - Class: rviz/Group
@@ -1008,8 +1045,8 @@ Visualization Manager:
       Name: Robot
     - Class: pr2_interactive_manipulation_frontend/PublishClickCamera
       Enabled: true
-      Image Rendering: background
-      Image Topic: /head_mount_kinect/rgb/image_color
+      Image Rendering: background and overlay
+      Image Topic: /wide_stereo/left/image_color
       Name: Head Camera
       Near Clip Distance: 0.01
       Overlay Alpha: 0.5
@@ -1019,40 +1056,26 @@ Visualization Manager:
       Transport Hint: compressed
       Value: true
       Visibility:
-        Debug Displays:
-          Attached Objects: true
-          Base Laser: true
-          Grasp Execution Markers: true
-          Grasp Markers: true
-          Octomap Point Cloud: true
-          Planning Scene Markers: true
-          Robot Model: true
-          Tabletop Segmentation Markers: true
-          Value: true
         Grid: true
-        Image: true
         Interactive Markers:
+          ActionLinks: true
+          ActionSteps: true
           Interactive Gripper: true
+          Marker: true
           PR2 Nav: true
           PR2 Teleop: true
           PR2 Teleop (Transparent): true
           Pick Up Objects: true
           Value: true
+          WorldObjects: true
         Kinect Stream: true
-        Navigation:
-          Map: true
-          Nav Global Path: true
-          Nav Obstacles: true
-          Value: true
         Panels:
           CameraFocusFrontend: true
           Manipulation: true
           Object Detection: true
           Object Recognition: true
           Value: true
-        People Tracking:
-          InteractiveMarkers: true
-          Value: true
+        PublishClickCamera: true
         Robot:
           InvisibleRobot: true
           RobotModel: true
@@ -1061,7 +1084,7 @@ Visualization Manager:
       Zoom Factor: 1
     - Alpha: 1
       Auto Size:
-        Auto Size Factor: 2
+        Auto Size Factor: 1
         Value: true
       Autocompute Intensity Bounds: true
       Autocompute Value Bounds:
@@ -1078,7 +1101,7 @@ Visualization Manager:
       Decay Time: 0
       Depth Map Topic: /head_mount_kinect/depth_registered/image
       Depth Map Transport Hint: compressedDepth
-      Enabled: true
+      Enabled: false
       Max Color: 255; 255; 255
       Max Intensity: 4096
       Min Color: 0; 0; 0
@@ -1086,7 +1109,7 @@ Visualization Manager:
       Name: Kinect Stream
       Occlusion Compensation:
         Occlusion Time-Out: 30
-        Value: true
+        Value: false
       Position Transformer: XYZ
       Queue Size: 3
       Selectable: true
@@ -1095,7 +1118,7 @@ Visualization Manager:
       Topic Filter: true
       Use Fixed Frame: true
       Use rainbow: true
-      Value: true
+      Value: false
     - Class: rviz/Group
       Displays:
         - Class: object_recognition_gui/ObjectRecognition
@@ -1114,172 +1137,45 @@ Visualization Manager:
           Value: true
       Enabled: true
       Name: Panels
-    - Class: rviz/Group
-      Displays:
-        - Alpha: 1
-          Class: rviz/RobotModel
-          Collision Enabled: false
-          Enabled: false
-          Links:
-            All Links Enabled: true
-            Expand Joint Details: false
-            Expand Link Details: false
-            Expand Tree: false
-            Link Tree Style: ""
-          Name: Robot Model
-          Robot Description: robot_description
-          TF Prefix: ""
-          Update Interval: 0
-          Value: false
-          Visual Enabled: true
-        - Class: rviz/Marker
-          Enabled: false
-          Marker Topic: /grasp_markers
-          Name: Grasp Markers
-          Namespaces:
-            {}
-          Queue Size: 100
-          Value: false
-        - Class: rviz/Marker
-          Enabled: false
-          Marker Topic: /object_manipulator/grasp_execution_markers
-          Name: Grasp Execution Markers
-          Namespaces:
-            {}
-          Queue Size: 100
-          Value: false
-        - Class: rviz/Marker
-          Enabled: false
-          Marker Topic: /attached_objects
-          Name: Attached Objects
-          Namespaces:
-            {}
-          Queue Size: 100
-          Value: false
-        - Class: rviz/Marker
-          Enabled: false
-          Marker Topic: /planning_scene_markers
-          Name: Planning Scene Markers
-          Namespaces:
-            {}
-          Queue Size: 100
-          Value: false
-        - Alpha: 1
-          Autocompute Intensity Bounds: true
-          Autocompute Value Bounds:
-            Max Value: 2.8125
-            Min Value: -0.0375
-            Value: true
-          Axis: Z
-          Channel Name: intensity
-          Class: rviz/PointCloud2
-          Color: 255; 255; 255
-          Color Transformer: FlatColor
-          Decay Time: 0
-          Enabled: false
-          Max Color: 255; 255; 255
-          Max Intensity: 4096
-          Min Color: 0; 0; 0
-          Min Intensity: 0
-          Name: Octomap Point Cloud
-          Position Transformer: XYZ
-          Queue Size: 10
-          Selectable: true
-          Size (Pixels): 3
-          Size (m): 0.025
-          Style: Boxes
-          Topic: /octomap_point_cloud
-          Use Fixed Frame: true
-          Use rainbow: true
-          Value: false
-        - Class: rviz/Marker
-          Enabled: false
-          Marker Topic: /tabletop_segmentation_markers
-          Name: Tabletop Segmentation Markers
-          Namespaces:
-            {}
-          Queue Size: 100
-          Value: false
-        - Alpha: 1
-          Autocompute Intensity Bounds: true
-          Autocompute Value Bounds:
-            Max Value: 10
-            Min Value: -10
-            Value: true
-          Axis: Z
-          Channel Name: intensity
-          Class: rviz/LaserScan
-          Color: 255; 255; 255
-          Color Transformer: Intensity
-          Decay Time: 0
-          Enabled: false
-          Max Color: 255; 255; 255
-          Max Intensity: 4096
-          Min Color: 0; 0; 0
-          Min Intensity: 0
-          Name: Base Laser
-          Position Transformer: XYZ
-          Queue Size: 10
-          Selectable: true
-          Size (Pixels): 3
-          Size (m): 0.01
-          Style: Billboards
-          Topic: /base_scan_throttled
-          Use Fixed Frame: true
-          Use rainbow: true
-          Value: false
-      Enabled: false
-      Name: Debug Displays
-    - Class: rviz/Group
-      Displays:
-        - Class: rviz/InteractiveMarkers
-          Enable Transparency: true
-          Enabled: true
-          Name: InteractiveMarkers
-          Show Axes: false
-          Show Descriptions: true
-          Show Visual Aids: false
-          Update Topic: ""
-          Value: true
-      Enabled: false
-      Name: People Tracking
-    - Class: rviz/Group
-      Displays:
-        - Alpha: 0.7
-          Class: rviz/Map
-          Draw Behind: false
-          Enabled: false
-          Name: Map
-          Topic: /map
-          Value: false
-        - Alpha: 1
-          Class: rviz/GridCells
-          Color: 255; 255; 127
-          Enabled: false
-          Name: Nav Obstacles
-          Topic: /move_base_node/local_costmap/obstacles
-          Value: false
-        - Alpha: 1
-          Buffer Length: 1
-          Class: rviz/Path
-          Color: 25; 255; 0
-          Enabled: false
-          Name: Nav Global Path
-          Topic: /move_base_node/NavfnROS/plan
-          Value: false
+    - Class: pr2_interactive_manipulation_frontend/PublishClickCamera
       Enabled: true
-      Name: Navigation
-    - Class: rviz/Image
-      Enabled: true
+      Image Rendering: background and overlay
       Image Topic: /head_mount_kinect/rgb/image_color
-      Max Value: 1
-      Median window: 5
-      Min Value: 0
-      Name: Image
-      Normalize Range: true
+      Name: PublishClickCamera
+      Near Clip Distance: 0.01
+      Overlay Alpha: 0.5
+      Publish Click Topic: /interactive_manipulation_image_click
       Queue Size: 2
+      Show Panel: false
       Transport Hint: raw
       Value: true
+      Visibility:
+        Grid: true
+        Head Camera: true
+        Interactive Markers:
+          ActionLinks: true
+          ActionSteps: true
+          Interactive Gripper: true
+          Marker: true
+          PR2 Nav: true
+          PR2 Teleop: true
+          PR2 Teleop (Transparent): true
+          Pick Up Objects: true
+          Value: true
+          WorldObjects: true
+        Kinect Stream: true
+        Panels:
+          CameraFocusFrontend: true
+          Manipulation: true
+          Object Detection: true
+          Object Recognition: true
+          Value: true
+        Robot:
+          InvisibleRobot: true
+          RobotModel: true
+          Value: true
+        Value: true
+      Zoom Factor: 1
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -1309,24 +1205,24 @@ Visualization Manager:
       Control Mode: Orbit
       Distance: 1.50083
       Eye:
-        X: 0.615015
-        Y: 0.0338595
-        Z: 2.37435
+        X: 0.555702
+        Y: 0.00240703
+        Z: 2.38942
       Focus:
-        X: 0.623642
-        Y: 0.0126772
-        Z: 0.873688
+        X: 0.602152
+        Y: 0.0135329
+        Z: 0.88935
       Maintain Vertical Axis: true
       Mouse Enabled: true
       Name: Current View
-      Near Clip Distance: 0.3
+      Near Clip Distance: 0.01
       Placement Topic: /rviz/camera_placement
       Target Frame: <Fixed Frame>
       Transition Time: 0.5
       Up:
-        X: 0.0275691
-        Y: 0.014128
-        Z: 0.99952
+        X: 0.00235045
+        Y: -0.00638027
+        Z: 0.999977
       Value: Animated (rviz_animated_view_controller)
     Saved: ~
 Window Geometry:
@@ -1334,22 +1230,24 @@ Window Geometry:
     collapsed: false
   Head Camera:
     collapsed: false
-  Height: 1039
+  Height: 1124
   Hide Left Dock: false
   Hide Right Dock: false
-  Image:
-    collapsed: false
   Manipulation:
     collapsed: false
   Object Detection:
     collapsed: false
-  QMainWindow State: 000000ff00000000fd00000003000000000000023c000003b0fc0200000008fc0000014e000000ad0000000000fffffffa000000000100000001fb000000300049006e0074006500720061006300740069007600650020004d0061006e006900700075006c006100740069006f006e0100000000ffffffff0000000000000000fb000000160048006500610064002000430061006d0065007200610000000041000001190000001600fffffffb0000000800540069006d0065020000028f00000446000002c700000046fb000000380049006e0074006500720061006300740069007600650020004f0062006a00650063007400200044006500740065006300740069006f006e0100000268000000cc0000000000000000fb0000000a0049006d0061006700650100000041000003b00000001600fffffffb0000000a0049006d006100670065020000046900000366000002f80000028bfb0000001e0054006f006f006c002000500072006f0070006500720074006900650073000000023f0000009a0000006400fffffffb0000000a0049006d0061006700650100000041000003b000000000000000000000000100000158000003b0fc0200000003fc000000410000018d000000fb0100001dfa000000010100000002fb0000000a005600690065007700730100000000ffffffff0000010f00fffffffb000000100044006900730070006c00610079007301000006080000011d0000010f00fffffffc000001d40000021d000000aa00fffffffa000000000100000002fb00000020004f0062006a00650063007400200044006500740065006300740069006f006e0100000000ffffffff000000cc00fffffffb00000018004d0061006e006900700075006c006100740069006f006e000000034f0000013e0000013e00fffffffc00000041000003740000000000fffffffa000000000100000001fb0000001200530065006c0065006300740069006f006e0100000000ffffffff0000000000000000000000020000019a00000031fc0100000002fb0000001800430061006d00650072006100200046006f00630075007301000001440000019a0000000000000000fb0000002a00430061006d00650072006100200046006f006300750073002000460072006f006e00740065006e006401000001440000029c00000000000000000000036d000003b000000001000000020000000100000002fc00000003000000020000000000000002000000020000000a0054006f006f006c007301000000000000034f00000000000000000000001600430061006d0065007200610046006f006300750073010000034f0000015500000000000000000000000300000000
+  Object Recorder Panel:
+    collapsed: false
+  PublishClickCamera:
+    collapsed: false
+  QMainWindow State: 000000ff00000000fd00000004000000000000027a00000405fc0200000009fc0000014e000000ad0000000000fffffffa000000000100000001fb000000300049006e0074006500720061006300740069007600650020004d0061006e006900700075006c006100740069006f006e0100000000ffffffff0000000000000000fb000000160048006500610064002000430061006d0065007200610000000041000004050000001600fffffffb0000000800540069006d0065020000028f00000446000002c700000046fb000000380049006e0074006500720061006300740069007600650020004f0062006a00650063007400200044006500740065006300740069006f006e0100000268000000cc0000000000000000fb0000000a0049006d0061006700650000000221000000b80000000000000000fb0000000a0049006d006100670065020000046900000366000002f80000028bfb0000001e0054006f006f006c002000500072006f007000650072007400690065007300000000410000031e0000006400fffffffb00000018004d0061006e006900700075006c006100740069006f006e00000000410000038c000000bd00fffffffb00000024005000750062006c0069007300680043006c00690063006b00430061006d0065007200610000000247000001ff0000001600ffffff000000010000017d00000405fc0200000003fc00000041000004050000000000fffffffaffffffff0100000002fb0000000a005600690065007700730000000000ffffffff0000010f00fffffffb000000100044006900730070006c00610079007300000006080000011d0000010f00fffffffc00000310000001360000000000fffffffa000000010100000002fb00000020004f0062006a00650063007400200044006500740065006300740069006f006e0000000000ffffffff000000cc00fffffffb00000018004d0061006e006900700075006c006100740069006f006e010000034f0000013e0000000000000000fc00000041000003740000000000fffffffa000000000100000001fb0000001200530065006c0065006300740069006f006e0100000000ffffffff0000000000000000000000020000019a00000031fc0100000002fb0000001800430061006d00650072006100200046006f00630075007301000001440000019a0000000000000000fb0000002a00430061006d00650072006100200046006f006300750073002000460072006f006e00740065006e006401000001440000029c0000000000000000000000030000078000000043fc0100000001fb0000002a004f0062006a0065006300740020005200650063006f0072006400650072002000500061006e0065006c010000000000000780000000c900ffffff00000780000003bc00000001000000020000000100000002fc00000003000000020000000000000002000000020000000a0054006f006f006c007301000000000000007100000000000000000000001600430061006d0065007200610046006f00630075007301000000710000043300000000000000000000000300000000
   Time:
     collapsed: false
   Tool Properties:
     collapsed: false
   Views:
     collapsed: false
-  Width: 1805
-  X: 43
-  Y: 45
+  Width: 1920
+  X: -8
+  Y: 24
