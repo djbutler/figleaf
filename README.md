@@ -37,6 +37,7 @@ def update(self):
 Then, run `rosmake`.
 
 **Running the experiment**
+
 On the robot, run the modified version of PBD: `roslaunch pr2_pbd_interaction pbd_backend.launch`
 
 On the workstation, run `scripts/experiment.sh 123 clean`, where 123 is the user ID, and "clean" is the filter to use. The filters are:
