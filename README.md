@@ -36,15 +36,15 @@ For help setting up ROS, see https://sites.google.com/site/humancenteredrobotics
 3. Clone this repo to your home folder, ~/figleaf. Run scripts/install.py to create symbolic links in your catkin and rosbuild workspaces. Run `catkin_make` in your catkin workspace.
 
 4. On the robot, you will need to modify PBD to remove the social gaze. To do this, modify the update method in pr2_pbd_interaction/src/arms.py, leaving just the two arm updates:
-```
-def update(self):
-  '''Periodic update for the two arms.
+  ```
+  def update(self):
+    '''Periodic update for the two arms.
 
-  This is called regularly by the update loop in interaction.
-  '''
-  for side in [Side.RIGHT, Side.LEFT]:
-    Arms.arms[side].update(self.is_executing())
-```
+    This is called regularly by the update loop in interaction.
+    '''
+    for side in [Side.RIGHT, Side.LEFT]:
+      Arms.arms[side].update(self.is_executing())
+  ```
 
 Then, run `rosmake`.
 
