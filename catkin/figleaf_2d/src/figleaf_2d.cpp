@@ -185,7 +185,7 @@ public:
 
 int main(int argc, char** argv)
 {
-  if (argc==3) {
+  if (argc>=3) {
     ros::init(argc, argv, "figleaf_image_converter");
     ImageConverter ic(argv[1], argv[2]);
     ros::spin();
