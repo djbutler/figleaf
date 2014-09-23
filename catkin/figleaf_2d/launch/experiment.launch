@@ -9,7 +9,6 @@
 
   <!-- rosbag recording node. -j option is for compression. -->
   <!--
-    rviz_camera_publisher/camera_pose
     l_cart/command_pose
     r_cart/command_pose
     head_traj_controller/point_head_action/goal
@@ -19,7 +18,8 @@
   <node pkg="rosbag" type="record" name="rosbag_record_exp"
     args="
       record -j -O $(arg data_dir)/$(arg user)_$(arg filter).bag
-      pr2_marker_control_transparent/feedback" />
+      pr2_marker_control_transparent/feedback
+      rviz_camera_publisher/camera_pose" />
 
   <!-- Launches pr2_interactive_manipulation frontend with one of the
        figleaf_2d config files: {clean, blur, box}.rviz -->
