@@ -46,7 +46,7 @@ For help setting up ROS, see https://sites.google.com/site/humancenteredrobotics
       Arms.arms[side].update(self.is_executing())
   ```
 
-Then, run `rosmake`.
+  Then, run `rosmake` on the robot.
 
 **Running the experiment**
 
@@ -60,3 +60,5 @@ On the workstation, run `scripts/experiment.sh 123 clean`, where 123 is the user
 The experiment script will save rosbag recordings to ~/experiment_data. Modify the script if you want to change it.
 
 To change what topics get logged, run `rosed figleaf_2d experiment.launch` to change the launch file.
+
+After, you can get the time taken for each condition using `python scripts/process_bag.py ~/experiment_data/123_clean.bag`.
