@@ -1,1 +1,0 @@
-/usr/bin/c++  -fPIC -O2 -g   -shared -Wl,-soname,libgtest.so -o /home/djbutler/rosbuild_ws/rviz_record_object_pose/lib/libgtest.so CMakeFiles/gtest.dir/src/gtest-all.cc.o -L/home/djbutler/rosbuild_ws/rviz_record_object_pose/build/gtest/src -lpthread -Wl,-rpath,/home/djbutler/rosbuild_ws/rviz_record_object_pose/build/gtest/src 

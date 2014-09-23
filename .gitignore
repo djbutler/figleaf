@@ -1,0 +1,4 @@
+*.so$
+*~$
+rosbuild/*/lib/
+rosbuild/*/build/
