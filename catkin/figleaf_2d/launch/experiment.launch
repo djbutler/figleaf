@@ -4,7 +4,7 @@
   <arg name="data_dir" /> <!-- Where to save rosbag data. -->
 
   <!-- Node that blurs the Kinect image. -->
-  <node pkg="figleaf_2d" type="figleaf_2d" name="kinect_blurrer"
+  <node pkg="figleaf_2d" type="blur" name="kinect_blurrer"
     args="/head_mount_kinect/rgb/image_color /blurred_kinect_rgb" />
 
   <!-- rosbag recording node. -j option is for compression. -->
