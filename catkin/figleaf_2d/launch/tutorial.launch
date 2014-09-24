@@ -1,0 +1,6 @@
+<launch>
+  <include file="$(find
+    pr2_interactive_manipulation_frontend)/launch/pr2_interactive_manipulation_desktop.launch">
+    <arg name="rviz_config_file_base" value="$(find figleaf_2d)/config/tutorial.rviz" />
+  </include>
+</launch>
