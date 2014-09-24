@@ -1,21 +1,34 @@
 <launch>
   <arg name="user" /> <!-- User name or ID -->
-  <arg name="filter" /> <!-- Must be one of {clean, blur, box} -->
+  <!-- Type of filter to use. "filter" is used for naming the rosbag. "clean",
+       "box", etc. turn the appropriate features on or off. -->
+  <arg name="filter" />
+  <arg name="clean" default="False" />
+  <arg name="blur" default="False" />
+  <arg name="mid" default="False" />
+  <arg name="box" default="False" />
   <arg name="data_dir" /> <!-- Where to save rosbag data. -->
 
-  <!-- Node that blurs the Kinect image. -->
-  <node pkg="figleaf_2d" type="figleaf_2d" name="kinect_blurrer"
+  <!-- Blur condition: Node that blurs the Kinect image. -->
+  <node
+    if="$(arg blur)"
+    pkg="figleaf_2d"
+    type="figleaf_2d"
+    name="kinect_blurrer"
     args="/head_mount_kinect/rgb/image_color /blurred_kinect_rgb" />
 
+  <!-- Mid condition: Node that calls object segmentation repeatedly. -->
+  <node
+    if="$(arg mid)"
+    pkg="rviz_objdetect_caller"
+    type="objdetect_caller_node"
+    name="objdetect_caller_node" />
+
   <!-- rosbag recording node. -j option is for compression. -->
-  <!--
-    l_cart/command_pose
-    r_cart/command_pose
-    head_traj_controller/point_head_action/goal
-    l_gripper_controller/command
-    r_gripper_controller/command
-  -->
-  <node pkg="rosbag" type="record" name="rosbag_record_exp"
+  <node
+    pkg="rosbag"
+    type="record"
+    name="rosbag_record_exp"
     args="
       record -j -O $(arg data_dir)/$(arg user)_$(arg filter).bag
       pr2_marker_control_transparent/feedback
@@ -23,8 +36,10 @@
 
   <!-- Launches pr2_interactive_manipulation frontend with one of the
        figleaf_2d config files: {clean, blur, box}.rviz -->
-  <include file="$(find
-    pr2_interactive_manipulation_frontend)/launch/pr2_interactive_manipulation_desktop.launch">
-    <arg name="rviz_config_file_base" value="$(find figleaf_2d)/config/$(arg filter).rviz" />
+  <include
+    file="$(find pr2_interactive_manipulation_frontend)/launch/pr2_interactive_manipulation_desktop.launch">
+    <arg
+      name="rviz_config_file_base"
+      value="$(find figleaf_2d)/config/$(arg filter).rviz" />
   </include>
 </launch>
