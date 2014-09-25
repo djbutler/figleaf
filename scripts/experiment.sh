@@ -1,3 +1,6 @@
+# $1 is the user id
+# $2 is the name of the filter (clean, blur, ...)
+
 DATA_DIR=/home/$USER/experiment_data
 
 if [ ! -e $DATA_DIR ]
