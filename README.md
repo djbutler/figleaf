@@ -7,9 +7,13 @@ Privacy tools for robotics.
 
 * ROS Groovy
 * ROS workspaces located at `${HOME}/catkin_ws` and `${HOME}/rosbuild_ws`
-* [PR2/pr2_pbd](https://github.com/PR2/pr2_pbd)
-* [view_controller_msgs](https://github.com/ros-visualization/view_controller_msgs) (use hydro-devel to get the catkin version)
 * [rviz_camera_publisher](https://github.com/jstnhuang/rviz_camera_publisher) (depends on catkin version of view_controller_msgs)
+  * [view_controller_msgs](https://github.com/ros-visualization/view_controller_msgs) (use hydro-devel to get the catkin version)
+* [rviz_objdetect_caller](https://github.com/jstnhuang/rviz_objdetect_caller)
+  * geometry_msgs
+  * object_manipulation_msgs
+  * pr2_interactive_object_detection
+  * sensor_msgs
 
 **For UW CSE users**
 
@@ -17,48 +21,36 @@ For help setting up ROS, see https://sites.google.com/site/humancenteredrobotics
 
 **Install**
 
-1. Install PBD in ~/rosbuild_ws on the workstation and the robot.
-
+1. Install view_controller_msgs and rviz_camera_publisher to the catkin workspace and compile.
   ```
-  git clone git@github.com:PR2/pr2_pbd.git
-  cd ~/rosbuild_ws
-  rosmake
-  ```
-
-2. Install view_controller_msgs and rviz_camera_publisher to the catkin workspace and compile.
-  ```
+  cd ~/catkin_ws/src
   git clone git@github.com:ros-visualization/view_controller_msgs.git -b hydro-devel
   git clone git@github.com:jstnhuang/rviz_camera_publisher.git
   cd ~/catkin_ws
   catkin_make
   ```
+  
+2. Install rviz_objdetect_caller to the rosbuild workspace on the workstation.
+  ```
+  cd ~/rosbuild_ws  
+  git clone git@github.com:jstnhuang/rviz_objdetect_caller.git
+  rosmake
+  ```
 
 3. Clone this repo to your home folder, ~/figleaf. Run scripts/install.py to create symbolic links in your catkin and rosbuild workspaces. Run `catkin_make` in your catkin workspace.
 
-4. On the robot, you will need to modify PBD to remove the social gaze. To do this, modify the update method in pr2_pbd_interaction/src/arms.py, leaving just the two arm updates:
-  ```
-  def update(self):
-    '''Periodic update for the two arms.
-
-    This is called regularly by the update loop in interaction.
-    '''
-    for side in [Side.RIGHT, Side.LEFT]:
-      Arms.arms[side].update(self.is_executing())
-  ```
-
-  Then, run `rosmake` on the robot.
-
 **Running the experiment**
 
-On the robot, run the modified version of PBD: `roslaunch pr2_pbd_interaction pbd_backend.launch`
+On the robot, run interactive manipulation: `roslaunch pr2_interactive_manipulation pr2_interactive_manipulation_robot.launch`
 
 On the workstation, run `scripts/experiment.sh 123 clean`, where 123 is the user ID, and "clean" is the filter to use. The filters are:
 * *clean*: No filters at all
 * *blur*: A blurry RGB image
-* *box*: A filter which shows no information at all. Users must click "Record object pose" to see bounding boxes of objects on the table.
+* *mid*: A blurry image + point cloud of only segmented objects
+* *box*: A filter where segmented objects are shown only as boxes.
 
-The experiment script will save rosbag recordings to ~/experiment_data. Modify the script if you want to change it.
+The experiment script will save rosbag recordings to ~/experiment_data. Modify the script if you want to change where the data goes.
 
-To change what topics get logged, run `rosed figleaf_2d experiment.launch` to change the launch file.
+To change what topics get logged or what nodes get run, run `rosed figleaf_2d experiment.launch` to change the launch file.
 
 After, you can get the time taken for each condition using `python scripts/process_bag.py ~/experiment_data/123_clean.bag`.
