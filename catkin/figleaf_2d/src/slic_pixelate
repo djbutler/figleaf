@@ -1,0 +1,61 @@
+#!/usr/bin/env python
+import roslib
+roslib.load_manifest('figleaf_2d')
+import sys
+import rospy
+import cv2
+from std_msgs.msg import String
+from sensor_msgs.msg import Image
+from cv_bridge import CvBridge, CvBridgeError
+import random
+
+import image_filtering as filt
+from skimage.segmentation import slic as slic_seg
+
+class image_converter:
+
+  def __init__(self):
+    self.image_pub = rospy.Publisher("image_topic_2",Image)
+    self.skipped = 0
+
+    cv2.namedWindow("Image window", 1)
+    self.bridge = CvBridge()
+    self.image_sub = rospy.Subscriber("/head_mount_kinect/rgb/image_color",Image,self.callback, queue_size=1)
+
+  def callback(self,data):
+    print('callback')
+    try:
+        cv_image = self.bridge.imgmsg_to_cv2(data, "bgr8")            
+    except CvBridgeError, e:
+        print e
+    if self.skipped == 10:
+        print('  processing')
+
+        cv_image2 = filt.slic(cv_image, sigma=3, compactness=15, n_segments=400) # filt.inverted_hue_of_slic_of_gaussian(cv_image, sigma=3, n_segments=2000)
+        
+#        cv_image2 = filt.inverted_hue_of_slic_of_gaussian(cv_image)
+        self.skipped = 0
+
+        cv2.imshow("Image window", cv_image2)
+        cv2.waitKey(3)
+        try:
+            self.image_pub.publish(self.bridge.cv2_to_imgmsg(cv_image2, "bgr8"))
+        except CvBridgeError, e:
+            print e
+    else:
+        print('  skipping')
+        self.skipped += 1
+
+
+def main(args):
+  ic = image_converter()
+  rospy.init_node('image_converter', anonymous=True)
+  try:
+    rospy.spin()
+  except KeyboardInterrupt:
+    print "Shutting down"
+  cv2.destroyAllWindows()
+
+if __name__ == '__main__':
+    main(sys.argv)
+
