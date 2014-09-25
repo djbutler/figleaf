@@ -3,10 +3,9 @@ Panels:
     Help Height: 80
     Name: Displays
     Property Tree Widget:
-      Expanded:
-        - /PointCloud1/Status1
+      Expanded: ~
       Splitter Ratio: 0.690544
-    Tree Height: 725
+    Tree Height: 357
   - Class: rviz/Views
     Expanded:
       - /Current View1
@@ -16,7 +15,7 @@ Panels:
     Experimental: false
     Name: Time
     SyncMode: 0
-    SyncSource: Image
+    SyncSource: PointCloud
   - Class: rviz/Tool Properties
     Expanded:
       - /Navigate To1
@@ -1337,13 +1336,13 @@ Visualization Manager:
       Control Mode: Orbit
       Distance: 1.50083
       Eye:
-        X: 0.608155
-        Y: 0.028254
-        Z: 2.37653
+        X: 0.549871
+        Y: 0.00594218
+        Z: 2.30226
       Focus:
-        X: 0.621661
-        Y: 0.0118794
-        Z: 0.875849
+        X: 0.600104
+        Y: 0.00648168
+        Z: 0.802267
       Maintain Vertical Axis: true
       Mouse Enabled: true
       Name: Current View
@@ -1352,9 +1351,9 @@ Visualization Manager:
       Target Frame: <Fixed Frame>
       Transition Time: 0.5
       Up:
-        X: 0.0243192
-        Y: 0.0110207
-        Z: 0.999644
+        X: -0.000157408
+        Y: 3.63005e-07
+        Z: 1
       Value: Animated (rviz_animated_view_controller)
     Saved: ~
 Window Geometry:
@@ -1381,5 +1380,5 @@ Window Geometry:
   Views:
     collapsed: true
   Width: 1871
-  X: 41
-  Y: -3
+  X: 49
+  Y: 24
