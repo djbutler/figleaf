@@ -105,16 +105,20 @@ include_directories(
 # )
 
 ## Declare a cpp executable
-add_executable(figleaf_2d src/figleaf_2d.cpp)
+add_executable(blur src/blur.cpp)
+add_executable(downsample src/downsample.cpp)
+add_executable(rotate_hue src/rotate_hue.cpp)
+add_executable(invert_rgb src/invert_rgb.cpp)
 
 ## Add cmake target dependencies of the executable/library
 ## as an example, message headers may need to be generated before nodes
 # add_dependencies(RosToOpenCVImage_node RosToOpenCVImage_generate_messages_cpp)
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries(figleaf_2d
-   ${catkin_LIBRARIES}
-)
+target_link_libraries(blur ${catkin_LIBRARIES})
+target_link_libraries(downsample ${catkin_LIBRARIES})
+target_link_libraries(rotate_hue ${catkin_LIBRARIES})
+target_link_libraries(invert_rgb ${catkin_LIBRARIES})
 
 #############
 ## Install ##
