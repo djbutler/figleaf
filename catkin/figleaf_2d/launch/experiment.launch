@@ -17,12 +17,33 @@
     name="kinect_blurrer"
     args="/head_mount_kinect/rgb/image_color /blurred_kinect_rgb" />
 
-  <!-- Mid condition: Node that calls object segmentation repeatedly. -->
+  <!-- Mid condition.
+       1) Node that calls object segmentation repeatedly.
+       2) Node that displays segmented objects as a point cloud. -->
   <node
     if="$(arg mid)"
     pkg="rviz_objdetect_caller"
     type="objdetect_caller_node"
     name="objdetect_caller_node" />
+  <node
+    if="$(arg mid)"
+    pkg="rviz_objdetect_caller"
+    type="publish_points_node"
+    name="publish_points_node" />
+
+  <!-- Box condition.
+       1) Node that calls object segmentation repeatedly.
+       2) Node that displays segmented objects as boxes. -->
+  <node
+    if="$(arg box)"
+    pkg="rviz_objdetect_caller"
+    type="objdetect_caller_node"
+    name="objdetect_caller_node" />
+  <node
+    if="$(arg box)"
+    pkg="rviz_objdetect_caller"
+    type="publish_boxes_node"
+    name="publish_boxes_node" />
 
   <!-- rosbag recording node. -j option is for compression. -->
   <node
