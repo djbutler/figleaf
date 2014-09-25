@@ -30,6 +30,18 @@
     pkg="rviz_objdetect_caller"
     type="publish_points_node"
     name="publish_points_node" />
+  <node
+    if="$(arg mid)"
+    pkg="figleaf_2d"
+    type="invert_rgb"
+    name="figleaf_invert_rgb"
+    args="/head_mount_kinect/rgb/image_color /mid_2d_image_invert_rgb" />
+  <node
+    if="$(arg mid)"
+    pkg="figleaf_2d"
+    type="blur"
+    name="kinect_blurrer"
+    args="/mid_2d_image_invert_rgb /mid_2d_image" />
 
   <!-- Box condition.
        1) Node that calls object segmentation repeatedly.
