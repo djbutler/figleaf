@@ -54,12 +54,10 @@ public:
     image_pub_ = it_.advertise(ros_output_stream, 1);
     image_sub_ = it_.subscribe(ros_image_stream, 1, &ImageConverter::imageCb, this);
 
-    cv::namedWindow(WINDOW);
   }
 
   ~ImageConverter()
   {
-    cv::destroyWindow(WINDOW);
   }
 
   void imageCb(const sensor_msgs::ImageConstPtr& msg)
@@ -78,16 +76,17 @@ public:
     /* Add any OpenCV processing here */
 
     // cv::GaussianBlur(cv_ptr->image,cv_ptr->image,cv::Size(31,31), (global_blur_width > 0) ? global_blur_width : 1);
-    Mat image_hsv;
-    cv::cvtColor(cv_ptr->image, image_hsv, cv::CV_BGR2HSV);
-    for( int y = 0; y < image_hsv.rows.rows; y++ )
+    cv::Mat image_hsv;
+    cv::cvtColor(cv_ptr->image, image_hsv, CV_BGR2HSV);
+    for( int y = 0; y < image_hsv.rows; y++ )
     {
       for( int x = 0; x < image_hsv.cols; x++ )
       {
         image_hsv.at<cv::Vec3b>(y,x)[0] =
-           cv::saturate_cast<uchar>( (image_hsv.at<cv::Vec3b>(y,x)[c] + 90 ) % 180 );
+           cv::saturate_cast<uchar>( (image_hsv.at<cv::Vec3b>(y,x)[0] + 90 ) % 180 );
       }
     }
+    cv::cvtColor(image_hsv, cv_ptr->image, CV_HSV2BGR);
     
 
  /* Gray scale image */
@@ -194,7 +193,7 @@ public:
 int main(int argc, char** argv)
 {
   if (argc>=3) {
-    ros::init(argc, argv, "figleaf_image_converter");
+    ros::init(argc, argv, "figleaf_image_converter", ros::init_options::AnonymousName);
     ImageConverter ic(argv[1], argv[2]);
     ros::spin();
     return 0;

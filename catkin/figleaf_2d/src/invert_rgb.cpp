@@ -54,12 +54,10 @@ public:
     image_pub_ = it_.advertise(ros_output_stream, 1);
     image_sub_ = it_.subscribe(ros_image_stream, 1, &ImageConverter::imageCb, this);
 
-    cv::namedWindow(WINDOW);
   }
 
   ~ImageConverter()
   {
-    cv::destroyWindow(WINDOW);
   }
 
   void imageCb(const sensor_msgs::ImageConstPtr& msg)
@@ -195,7 +193,7 @@ public:
 int main(int argc, char** argv)
 {
   if (argc>=3) {
-    ros::init(argc, argv, "figleaf_image_converter");
+    ros::init(argc, argv, "figleaf_image_converter", ros::init_options::AnonymousName);
     ImageConverter ic(argv[1], argv[2]);
     ros::spin();
     return 0;

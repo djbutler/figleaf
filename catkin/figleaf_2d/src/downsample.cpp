@@ -77,10 +77,19 @@ public:
 
     /* Add any OpenCV processing here */
 
-    cv::GaussianBlur(cv_ptr->image,cv_ptr->image,cv::Size(31,31), (global_blur_width > 0) ? global_blur_width : 1);
-    cv::imshow(WINDOW, cv_ptr->image);
-    cv::createTrackbar("Blur Width:", WINDOW, &global_blur_width, 20, update_global_blur_width);
-    update_global_blur_width(global_blur_width, 0);
+    // cv::GaussianBlur(cv_ptr->image,cv_ptr->image,cv::Size(31,31), (global_blur_width > 0) ? global_blur_width : 1);
+    for( int y = 0; y < cv_ptr->image.rows; y++ )
+    {
+      for( int x = 0; x < cv_ptr->image.cols; x++ )
+      {
+        for( int c = 0; c < 3; c++ )
+        {
+          cv_ptr->image.at<cv::Vec3b>(y,x)[c] =
+             cv::saturate_cast<uchar>( 255 - cv_ptr->image.at<cv::Vec3b>(y,x)[c] );
+        }
+      }
+    }
+    
 
  /* Gray scale image */
 /*    cv::Mat filtered_image;
@@ -186,7 +195,7 @@ public:
 int main(int argc, char** argv)
 {
   if (argc>=3) {
-    ros::init(argc, argv, "figleaf_image_converter");
+    ros::init(argc, argv, "figleaf_image_converter", ros::init_options::AnonymousName);
     ImageConverter ic(argv[1], argv[2]);
     ros::spin();
     return 0;
