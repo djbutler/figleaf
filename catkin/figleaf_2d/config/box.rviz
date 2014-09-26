@@ -1106,7 +1106,7 @@ Visualization Manager:
       Decay Time: 0
       Depth Map Topic: /head_mount_kinect/depth_registered/image
       Depth Map Transport Hint: compressedDepth
-      Enabled: false
+      Enabled: true
       Max Color: 255; 255; 255
       Max Intensity: 4096
       Min Color: 0; 0; 0
@@ -1123,7 +1123,7 @@ Visualization Manager:
       Topic Filter: true
       Use Fixed Frame: true
       Use rainbow: true
-      Value: false
+      Value: true
     - Class: rviz/Group
       Displays:
         - Class: object_recognition_gui/ObjectRecognition
@@ -1269,13 +1269,13 @@ Visualization Manager:
       Control Mode: Orbit
       Distance: 1.50083
       Eye:
-        X: 0.585613
-        Y: 0.00763041
-        Z: 2.58291
+        X: 0.591422
+        Y: 0.0336385
+        Z: 2.58142
       Focus:
-        X: 0.614996
-        Y: 0.00393768
-        Z: 1.08237
+        X: 0.617323
+        Y: 0.0284233
+        Z: 1.08082
       Maintain Vertical Axis: true
       Mouse Enabled: true
       Name: Current View
@@ -1284,9 +1284,9 @@ Visualization Manager:
       Target Frame: <Fixed Frame>
       Transition Time: 0.5
       Up:
-        X: 0.0137412
-        Y: 0.00252724
-        Z: 0.999902
+        X: 0.0160375
+        Y: 0.00474976
+        Z: 0.99986
       Value: Animated (rviz_animated_view_controller)
     Saved: ~
 Window Geometry:
