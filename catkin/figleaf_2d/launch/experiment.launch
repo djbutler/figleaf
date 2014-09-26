@@ -40,7 +40,7 @@
     pkg="figleaf_2d"
     type="rotate_hue"
     name="figleaf_rotate_hue"
-    args="/image_topic_2 /mid_2d_image_rotate_hue" />
+    args="/image_topic_2 /mid_2d_image" />
   
   <!-- Box condition.
        1) Node that calls object segmentation repeatedly.
