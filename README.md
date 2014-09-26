@@ -15,6 +15,7 @@ Privacy tools for robotics.
   * pr2_interactive_object_detection
   * sensor_msgs
   * [scikit-image](http://scikit-image.org/download.html)
+* Modified version of rviz (see instructions below)
 
 **For UW CSE users**
 
@@ -42,11 +43,18 @@ For help setting up ROS, see https://sites.google.com/site/humancenteredrobotics
    ```sudo pip install -U scikit-image```
 
 4. Clone this repo to your home folder, ~/figleaf. Run scripts/install.py to create symbolic links in your catkin and rosbuild workspaces. Run `catkin_make` in your catkin workspace.
+5. Make a modified version of rviz in your catkin workspace:
+   ```
+   cd ~/catkin_ws/src
+   git clone git@github.com:ros-visualization/rviz.git -b groovy-devel
+   ```
+   The modification disables the "Kinect Stream" display. Instead, it uses the code in the Kinect Stream display that computes the point cloud shadow, and publishes the point cloud and shadow point cloud to a topic called /kinect_mld (multi-layer display).
+   When the experiment is launched, it launches a node which sends /kinect_mld through a self-filtering nodes, which eliminates points that just represent the robot. The filtered point cloud is published to /kinect_mld_filtered.
 
 5. Optional: make the tabletop segmenter work on self-filtered point clouds. Solution for now: on the robot, run
    ```sudo vim /opt/ros/groovy/stacks/pr2_object_manipulation/applications/pr2_interactive_object_detection/launch/pr2_interactive_object_detection_robot.launch```
    
-   Change tabletop_segmentation_points_inputs from `$(arg kinect_camera_name)/depth_registered/points` to `$(arg kinect_camera_name)/rgb/object_modeling_points_filtered`.
+   Change tabletop_segmentation_points_inputs from `$(arg kinect_camera_name)/depth_registered/points` to `/kinect_mld_filtered`.
 
    Before:
    ```
@@ -63,17 +71,17 @@ For help setting up ROS, see https://sites.google.com/site/humancenteredrobotics
       <arg name="flatten_table" value="$(arg flatten_table)"/>  
     </include>
     ```
-    To:
+    After:
     ```
     <include unless="$(arg cvfh)" file="$(find tabletop_object_detector)/launch/tabletop_complete.launch">
       <!--/head_mount_kinect/rgb/object_modeling_points_filtered-->
-      <arg name="tabletop_segmentation_points_input" value="$(arg kinect_camera_name)/rgb/object_modeling_points_filtered"/>
+      <arg name="tabletop_segmentation_points_input" value="/kinect_mld_filtered"/>
       <arg name="flatten_table" value="$(arg flatten_table)"/>
       <arg name="model_set" value="$(arg model_set)"/>
     </include>
     
     <include if="$(arg cvfh)" file="$(find tabletop_vfh_cluster_detector)/launch/tabletop_complete.launch">
-      <arg name="tabletop_segmentation_points_input" value="$(arg kinect_camera_name)/rgb/object_modeling_points_filtered"/>
+      <arg name="tabletop_segmentation_points_input" value="/kinect_mld_filtered"/>
       <arg name="flatten_table" value="$(arg flatten_table)"/>
     </include>
     ```
@@ -86,9 +94,8 @@ On the robot, run interactive manipulation: `roslaunch pr2_interactive_manipulat
 
 On the workstation, run `scripts/experiment.sh 123 clean`, where 123 is the user ID, and "clean" is the filter to use. The filters are:
 * *clean*: No filters at all
-* *blur*: A blurry RGB image
-* *mid*: A blurry image + point cloud of only segmented objects
-* *box*: A filter where segmented objects are shown only as boxes.
+* *mid*: A superpixel and hue-inverted image + point cloud of only segmented objects
+* *box*: A filter where segmented objects are shown as boxes.
 
 The experiment script will save rosbag recordings to ~/experiment_data. Modify the script if you want to change where the data goes.
 
