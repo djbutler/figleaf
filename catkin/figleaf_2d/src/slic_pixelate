@@ -57,7 +57,7 @@ class image_converter:
         cv2.imshow("Image window", cv_out_image)
         cv2.waitKey(3)
         try:
-            self.image_pub.publish(self.bridge.cv2_to_imgmsg(cv_out_image, "passthrough"))
+            self.image_pub.publish(self.bridge.cv2_to_imgmsg(cv_out_image, "bgr8"))
         except CvBridgeError, e:
             print e
     else:
