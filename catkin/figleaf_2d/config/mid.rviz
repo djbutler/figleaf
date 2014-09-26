@@ -3,9 +3,13 @@ Panels:
     Help Height: 80
     Name: Displays
     Property Tree Widget:
-      Expanded: ~
+      Expanded:
+        - /Kinect Stream1
+        - /Kinect Stream1/Occlusion Compensation1
+        - /Image1
+        - /Marker1
       Splitter Ratio: 0.690544
-    Tree Height: 357
+    Tree Height: 725
   - Class: rviz/Views
     Expanded:
       - /Current View1
@@ -15,7 +19,7 @@ Panels:
     Experimental: false
     Name: Time
     SyncMode: 0
-    SyncSource: PointCloud
+    SyncSource: Image
   - Class: rviz/Tool Properties
     Expanded:
       - /Navigate To1
@@ -1037,6 +1041,7 @@ Visualization Manager:
           Pick Up Objects: true
           Value: true
         Kinect Stream: true
+        Marker: true
         Navigation:
           Map: true
           Nav Global Path: true
@@ -1077,14 +1082,14 @@ Visualization Manager:
       Decay Time: 0
       Depth Map Topic: /head_mount_kinect/depth_registered/image
       Depth Map Transport Hint: compressedDepth
-      Enabled: false
+      Enabled: true
       Max Color: 255; 255; 255
       Max Intensity: 4096
       Min Color: 0; 0; 0
       Min Intensity: 0
       Name: Kinect Stream
       Occlusion Compensation:
-        Occlusion Time-Out: 30
+        Occlusion Time-Out: 300
         Value: true
       Position Transformer: XYZ
       Queue Size: 3
@@ -1094,7 +1099,7 @@ Visualization Manager:
       Topic Filter: true
       Use Fixed Frame: true
       Use rainbow: true
-      Value: false
+      Value: true
     - Class: rviz/Group
       Displays:
         - Class: object_recognition_gui/ObjectRecognition
@@ -1270,7 +1275,7 @@ Visualization Manager:
       Name: Navigation
     - Class: rviz/Image
       Enabled: true
-      Image Topic: /head_mount_kinect/rgb/image_color
+      Image Topic: /mid_2d_image
       Max Value: 1
       Median window: 5
       Min Value: 0
@@ -1307,6 +1312,14 @@ Visualization Manager:
       Use Fixed Frame: true
       Use rainbow: true
       Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: /segmented_objects_table
+      Name: Marker
+      Namespaces:
+        table: true
+      Queue Size: 100
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -1336,13 +1349,13 @@ Visualization Manager:
       Control Mode: Orbit
       Distance: 1.50083
       Eye:
-        X: 0.549871
-        Y: 0.00594218
-        Z: 2.30226
+        X: 0.604862
+        Y: 0.0475247
+        Z: 2.57812
       Focus:
-        X: 0.600104
-        Y: 0.00648168
-        Z: 0.802267
+        X: 0.622579
+        Y: 0.0431351
+        Z: 1.07739
       Maintain Vertical Axis: true
       Mouse Enabled: true
       Name: Current View
@@ -1351,9 +1364,9 @@ Visualization Manager:
       Target Frame: <Fixed Frame>
       Transition Time: 0.5
       Up:
-        X: -0.000157408
-        Y: 3.63005e-07
-        Z: 1
+        X: 0.0214501
+        Y: 0.0049932
+        Z: 0.999757
       Value: Animated (rviz_animated_view_controller)
     Saved: ~
 Window Geometry:
@@ -1380,5 +1393,5 @@ Window Geometry:
   Views:
     collapsed: true
   Width: 1871
-  X: 49
-  Y: 24
+  X: 41
+  Y: -3

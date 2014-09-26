@@ -9,6 +9,27 @@
   <arg name="box" default="False" />
   <arg name="data_dir" /> <!-- Where to save rosbag data. -->
 
+  <!-- All conditions:
+       1) Run Kinect MLD publisher (via Kinect Stream rviz plugin)
+       2) Send /kinect_mld to robot_self_filter
+       3) /kinect_mld_filtered goes to tabletop segmenter. -->
+  <!--node pkg="robot_self_filter" type="self_filter" respawn="true" name="mld_self_filter" 
+    output="screen">                                                         
+    <remap from="cloud_in" to="/kinect_mld" />
+    <remap from="cloud_out" to="/kinect_mld_filtered" />
+    <param name="sensor_frame" type="string" value="/head_mount_kinect_rgb_optical_frame" />
+    <param name="subsample_value" type="double" value=".02"/>
+    <rosparam command="load" file="$(find pr2_arm_navigation_perception)/config/self_filter_right_left.yaml" />
+  </node-->
+  <node pkg="robot_self_filter_color" type="self_filter_color" respawn="true" name="mld_self_filter_color">                                                           
+    <remap from="cloud_in" to="/kinect_mld" />
+    <remap from="cloud_out" to="/kinect_mld_filtered" />
+    <!--param name="sensor_frame" type="string" value="/head_mount_kinect_rgb_optical_frame" /-->
+    <param name="sensor_frame" type="string" value="" />
+    <param name="subsample_value" type="double" value=".005"/>                 
+    <rosparam command="load" file="$(find figleaf_2d)/config/object_modeling_self_filter.yaml" />
+  </node>
+
   <!-- Blur condition: Node that blurs the Kinect image. -->
   <node
     if="$(arg blur)"
@@ -30,7 +51,23 @@
     pkg="rviz_objdetect_caller"
     type="publish_points_node"
     name="publish_points_node" />
-
+  <node
+    if="$(arg mid)"
+    pkg="rviz_objdetect_caller"
+    type="publish_table_node"
+    name="publish_table_node" />
+  <node
+    if="$(arg mid)"
+    pkg="figleaf_2d"
+    type="slic_pixelate"
+    name="slic_pixelate" />
+  <node
+    if="$(arg mid)"
+    pkg="figleaf_2d"
+    type="rotate_hue"
+    name="figleaf_rotate_hue"
+    args="/image_topic_2 /mid_2d_image" />
+  
   <!-- Box condition.
        1) Node that calls object segmentation repeatedly.
        2) Node that displays segmented objects as boxes. -->
@@ -44,6 +81,11 @@
     pkg="rviz_objdetect_caller"
     type="publish_boxes_node"
     name="publish_boxes_node" />
+  <node
+    if="$(arg box)"
+    pkg="rviz_objdetect_caller"
+    type="publish_table_node"
+    name="publish_table_node" />
 
   <!-- rosbag recording node. -j option is for compression. -->
   <node
