@@ -9,7 +9,7 @@ Panels:
         - /Kinect Stream1
         - /Image1
       Splitter Ratio: 0.690544
-    Tree Height: 121
+    Tree Height: 357
   - Class: rviz/Views
     Expanded:
       - /Current View1
@@ -1311,13 +1311,13 @@ Visualization Manager:
       Control Mode: Orbit
       Distance: 1.50083
       Eye:
-        X: 0.589371
-        Y: -0.00353046
-        Z: 2.38135
+        X: 0.608813
+        Y: 0.0429521
+        Z: 2.5824
       Focus:
-        X: 0.614552
-        Y: -0.00118709
-        Z: 0.880732
+        X: 0.637014
+        Y: 0.0413201
+        Z: 1.08183
       Maintain Vertical Axis: true
       Mouse Enabled: true
       Name: Current View
@@ -1326,9 +1326,9 @@ Visualization Manager:
       Target Frame: <Fixed Frame>
       Transition Time: 0.5
       Up:
-        X: 0.0165415
-        Y: -0.00155293
-        Z: 0.999862
+        X: 0.0145267
+        Y: 0.000690597
+        Z: 0.999894
       Value: Animated (rviz_animated_view_controller)
     Saved: ~
 Window Geometry:
@@ -1355,5 +1355,5 @@ Window Geometry:
   Views:
     collapsed: true
   Width: 1871
-  X: 41
-  Y: -3
+  X: 49
+  Y: 24
