@@ -9,6 +9,7 @@ from sensor_msgs.msg import Image
 from cv_bridge import CvBridge, CvBridgeError
 import random
 
+import message_filters
 import image_filtering as filt
 from skimage.segmentation import slic as slic_seg
 
@@ -18,28 +19,41 @@ class image_converter:
     self.image_pub = rospy.Publisher("image_topic_2",Image)
     self.skipped = 0
 
+#    image_sub = message_filters.Subscriber('image', Image)
+#    info_sub = message_filters.Subscriber('camera_info', CameraInfo)
+
+#    ts = message_filters.TimeSynchronizer([image_sub, info_sub], 10)
+#    ts.registerCallback(callback)
+
     cv2.namedWindow("Image window", 1)
     self.bridge = CvBridge()
-    self.image_sub = rospy.Subscriber("/head_mount_kinect/rgb/image_color",Image,self.callback, queue_size=1)
 
-  def callback(self,data):
+#    self.image_sub = rospy.Subscriber("/head_mount_kinect/rgb/image_color", Image, self.callback, queue_size=1)
+    self.image_sub = message_filters.Subscriber("/head_mount_kinect/rgb/image_color", Image)
+    self.depth_sub = message_filters.Subscriber("/head_mount_kinect/depth_registered/image_rect", Image)
+    self.time_sync = message_filters.TimeSynchronizer([self.image_sub, self.depth_sub], 5)
+    self.time_sync.registerCallback(self.callback)
+
+  def callback(self, image_data, depth_data):
     print('callback')
     try:
-        cv_image = self.bridge.imgmsg_to_cv2(data, "bgr8")            
+        cv_image = self.bridge.imgmsg_to_cv2(image_data, "bgr8")            
+        cv_depth = self.bridge.imgmsg_to_cv2(image_data, "bgr8")            
     except CvBridgeError, e:
         print e
+
     if self.skipped == 10:
         print('  processing')
 
-        cv_image2 = filt.slic(cv_image, sigma=3, compactness=15, n_segments=400) # filt.inverted_hue_of_slic_of_gaussian(cv_image, sigma=3, n_segments=2000)
+        cv_out_image = filt.slic(cv_image, sigma=3, compactness=15, n_segments=400)
         
 #        cv_image2 = filt.inverted_hue_of_slic_of_gaussian(cv_image)
         self.skipped = 0
 
-        cv2.imshow("Image window", cv_image2)
+        cv2.imshow("Image window", cv_out_image)
         cv2.waitKey(3)
         try:
-            self.image_pub.publish(self.bridge.cv2_to_imgmsg(cv_image2, "bgr8"))
+            self.image_pub.publish(self.bridge.cv2_to_imgmsg(cv_out_image, "bgr8"))
         except CvBridgeError, e:
             print e
     else:
