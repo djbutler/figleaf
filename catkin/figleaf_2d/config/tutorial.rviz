@@ -11,7 +11,7 @@ Panels:
         - /Image1
         - /PointCloud21
       Splitter Ratio: 0.596306
-    Tree Height: 1041
+    Tree Height: 437
   - Class: rviz/Views
     Expanded:
       - /Current View1
@@ -1251,13 +1251,13 @@ Visualization Manager:
       Control Mode: Orbit
       Distance: 1.50083
       Eye:
-        X: 1.46017
-        Y: 0.674146
-        Z: 2.12508
+        X: 0.604938
+        Y: 0.00571358
+        Z: 2.57843
       Focus:
-        X: 0.618827
-        Y: 0.00113469
-        Z: 1.08024
+        X: 0.623105
+        Y: 0.00333934
+        Z: 1.07771
       Maintain Vertical Axis: true
       Mouse Enabled: true
       Name: Current View
@@ -1266,9 +1266,9 @@ Visualization Manager:
       Target Frame: <Fixed Frame>
       Transition Time: 0.5
       Up:
-        X: 0
-        Y: 0
-        Z: 1
+        X: 0.0212139
+        Y: 0.00166658
+        Z: 0.999774
       Value: Animated (rviz_animated_view_controller)
     Saved: ~
 Window Geometry:
@@ -1299,5 +1299,5 @@ Window Geometry:
   Views:
     collapsed: false
   Width: 1871
-  X: 41
-  Y: -3
+  X: 49
+  Y: 24
