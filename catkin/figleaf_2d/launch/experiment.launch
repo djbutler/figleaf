@@ -53,7 +53,9 @@
     args="
       record -j -O $(arg data_dir)/$(arg user)_$(arg filter).bag
       pr2_marker_control_transparent/feedback
-      rviz_camera_publisher/camera_pose" />
+      rviz_camera_publisher/camera_pose
+      head_mount_kinect/rgb/image_rect_color
+      head_mount_kinect/depth_registered/image_rect" />
 
   <!-- Launches pr2_interactive_manipulation frontend with one of the
        figleaf_2d config files: {clean, blur, box}.rviz -->
