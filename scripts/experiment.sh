@@ -12,6 +12,7 @@ if [ -e $DATA_DIR/$1_$2.bag ]
 then
   echo "/home/$USER/experiment_data/$1_$2.bag already exists! Stopping launch"
 else
+  ./reset_robot.sh
   case "$2" in
     clean)
       roslaunch figleaf_2d experiment.launch user:=$1 data_dir:=$DATA_DIR filter:=$2 clean:=True

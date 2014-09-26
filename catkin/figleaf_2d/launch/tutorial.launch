@@ -1,4 +1,12 @@
 <launch>
+  <node pkg="robot_self_filter_color" type="self_filter_color" respawn="true" name="mld_self_filter_color">
+    <remap from="cloud_in" to="/kinect_mld" />
+    <remap from="cloud_out" to="/kinect_mld_filtered" />
+    <param name="sensor_frame" type="string" value="" />
+    <param name="subsample_value" type="double" value=".005"/>                 
+    <rosparam command="load" file="$(find figleaf_2d)/config/object_modeling_self_filter.yaml" />
+  </node>
+
   <include file="$(find
     pr2_interactive_manipulation_frontend)/launch/pr2_interactive_manipulation_desktop.launch">
     <arg name="rviz_config_file_base" value="$(find figleaf_2d)/config/tutorial.rviz" />

@@ -1114,7 +1114,7 @@ Visualization Manager:
       Min Intensity: 0
       Name: Kinect Stream
       Occlusion Compensation:
-        Occlusion Time-Out: 30
+        Occlusion Time-Out: 300
         Value: true
       Position Transformer: XYZ
       Queue Size: 3
@@ -1270,13 +1270,13 @@ Visualization Manager:
       Control Mode: Orbit
       Distance: 1.50083
       Eye:
-        X: 0.589884
-        Y: 0.0513882
-        Z: 2.5815
+        X: 0.603387
+        Y: 0.00846076
+        Z: 2.57884
       Focus:
-        X: 0.616312
-        Y: 0.0443178
-        Z: 1.08091
+        X: 0.622568
+        Y: 0.00509787
+        Z: 1.07813
       Maintain Vertical Axis: true
       Mouse Enabled: true
       Name: Current View
@@ -1285,9 +1285,9 @@ Visualization Manager:
       Target Frame: <Fixed Frame>
       Transition Time: 0.5
       Up:
-        X: 0.0156484
-        Y: 0.00674277
-        Z: 0.999855
+        X: 0.0205386
+        Y: 0.00237771
+        Z: 0.999786
       Value: Animated (rviz_animated_view_controller)
     Saved: ~
 Window Geometry:
@@ -1316,5 +1316,5 @@ Window Geometry:
   Views:
     collapsed: false
   Width: 1871
-  X: 41
-  Y: -3
+  X: 49
+  Y: 24
