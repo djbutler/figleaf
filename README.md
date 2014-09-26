@@ -80,6 +80,8 @@ For help setting up ROS, see https://sites.google.com/site/humancenteredrobotics
 
 **Running the experiment**
 
+In 014, shut off the right light switch.
+
 On the robot, run interactive manipulation: `roslaunch pr2_interactive_manipulation pr2_interactive_manipulation_robot.launch`
 
 On the workstation, run `scripts/experiment.sh 123 clean`, where 123 is the user ID, and "clean" is the filter to use. The filters are:
