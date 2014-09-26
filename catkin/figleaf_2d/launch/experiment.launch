@@ -30,7 +30,18 @@
     pkg="rviz_objdetect_caller"
     type="publish_points_node"
     name="publish_points_node" />
-
+  <node
+    if="$(arg mid)"
+    pkg="figleaf_2d"
+    type="slic_pixelate"
+    name="slic_pixelate" />
+  <node
+    if="$(arg mid)"
+    pkg="figleaf_2d"
+    type="rotate_hue"
+    name="figleaf_rotate_hue"
+    args="/image_topic_2 /mid_2d_image_rotate_hue" />
+  
   <!-- Box condition.
        1) Node that calls object segmentation repeatedly.
        2) Node that displays segmented objects as boxes. -->
