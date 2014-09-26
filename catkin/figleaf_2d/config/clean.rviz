@@ -1305,10 +1305,10 @@ Visualization Manager:
       Position Transformer: XYZ
       Queue Size: 10
       Selectable: true
-      Size (Pixels): 3
+      Size (Pixels): 4
       Size (m): 0.01
       Style: Points
-      Topic: /kinect_mld
+      Topic: /kinect_mld_filtered
       Use Fixed Frame: true
       Use rainbow: true
       Value: true
@@ -1341,12 +1341,12 @@ Visualization Manager:
       Control Mode: Orbit
       Distance: 1.50083
       Eye:
-        X: 0.593087
-        Y: 0.026186
-        Z: 2.58112
+        X: 1.48007
+        Y: -0.852869
+        Z: 1.9397
       Focus:
-        X: 0.618019
-        Y: 0.0252842
+        X: 0.618016
+        Y: 0.0252833
         Z: 1.0805
       Maintain Vertical Axis: true
       Mouse Enabled: true
@@ -1356,9 +1356,9 @@ Visualization Manager:
       Target Frame: <Fixed Frame>
       Transition Time: 0.5
       Up:
-        X: 0.0166828
-        Y: 0.00187416
-        Z: 0.999859
+        X: 0
+        Y: 0
+        Z: 1
       Value: Animated (rviz_animated_view_controller)
     Saved: ~
 Window Geometry:

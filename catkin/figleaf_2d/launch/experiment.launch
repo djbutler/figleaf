@@ -13,13 +13,21 @@
        1) Run Kinect MLD publisher (via Kinect Stream rviz plugin)
        2) Send /kinect_mld to robot_self_filter
        3) /kinect_mld_filtered goes to tabletop segmenter. -->
-  <node pkg="robot_self_filter" type="self_filter" respawn="true" name="mld_self_filter" 
+  <!--node pkg="robot_self_filter" type="self_filter" respawn="true" name="mld_self_filter" 
     output="screen">                                                         
     <remap from="cloud_in" to="/kinect_mld" />
     <remap from="cloud_out" to="/kinect_mld_filtered" />
-    <param name="sensor_frame" type="string" value="$(arg kinect_frame_prefix)_rgb_optical_frame" />
-    <param name="subsample_value" type="double" value=".02"/>                
-    <rosparam command="load" file="$(find pr2_arm_navigation_perception)/config/self_filter_$(arg arm_config).yaml" />
+    <param name="sensor_frame" type="string" value="/head_mount_kinect_rgb_optical_frame" />
+    <param name="subsample_value" type="double" value=".02"/>
+    <rosparam command="load" file="$(find pr2_arm_navigation_perception)/config/self_filter_right_left.yaml" />
+  </node-->
+  <node pkg="robot_self_filter_color" type="self_filter_color" respawn="true" name="mld_self_filter_color">                                                           
+    <remap from="cloud_in" to="/kinect_mld" />
+    <remap from="cloud_out" to="/kinect_mld_filtered" />
+    <!--param name="sensor_frame" type="string" value="/head_mount_kinect_rgb_optical_frame" /-->
+    <param name="sensor_frame" type="string" value="" />
+    <param name="subsample_value" type="double" value=".005"/>                 
+    <rosparam command="load" file="$(find pr2_object_manipulation_launch)/config/object_modeling_self_filter.yaml" />
   </node>
 
   <!-- Blur condition: Node that blurs the Kinect image. -->
