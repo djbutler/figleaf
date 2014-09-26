@@ -6,7 +6,7 @@ Panels:
       Expanded:
         - /Interactive Markers1
         - /Head Camera1
-        - /Kinect Stream1
+        - /Kinect Stream1/Occlusion Compensation1
         - /Image1
         - /PointCloud21
       Splitter Ratio: 0.690544
@@ -1089,7 +1089,7 @@ Visualization Manager:
       Min Intensity: 0
       Name: Kinect Stream
       Occlusion Compensation:
-        Occlusion Time-Out: 30
+        Occlusion Time-Out: 300
         Value: true
       Position Transformer: XYZ
       Queue Size: 3
@@ -1341,13 +1341,13 @@ Visualization Manager:
       Control Mode: Orbit
       Distance: 1.50083
       Eye:
-        X: 1.48007
-        Y: -0.852869
-        Z: 1.9397
+        X: 0.606838
+        Y: 0.0489382
+        Z: 2.57763
       Focus:
-        X: 0.618016
-        Y: 0.0252833
-        Z: 1.0805
+        X: 0.623408
+        Y: 0.0437328
+        Z: 1.0769
       Maintain Vertical Axis: true
       Mouse Enabled: true
       Name: Current View
@@ -1356,9 +1356,9 @@ Visualization Manager:
       Target Frame: <Fixed Frame>
       Transition Time: 0.5
       Up:
-        X: 0
-        Y: 0
-        Z: 1
+        X: 0.0222145
+        Y: 0.00553693
+        Z: 0.999738
       Value: Animated (rviz_animated_view_controller)
     Saved: ~
 Window Geometry:
