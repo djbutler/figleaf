@@ -10,6 +10,7 @@ Panels:
         - /Panels1/CameraFocusFrontend1
         - /Marker1
         - /PublishClickCamera2
+        - /Marker2
       Splitter Ratio: 0.596306
     Tree Height: 935
   - Class: rviz/Views
@@ -1231,6 +1232,14 @@ Visualization Manager:
           Value: true
         Value: true
       Zoom Factor: 1
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: /segmented_objects_table
+      Name: Marker
+      Namespaces:
+        table: true
+      Queue Size: 100
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -1260,13 +1269,13 @@ Visualization Manager:
       Control Mode: Orbit
       Distance: 1.50083
       Eye:
-        X: 0.611995
-        Y: 0.0429618
-        Z: 2.58168
+        X: 0.585613
+        Y: 0.00763041
+        Z: 2.58291
       Focus:
-        X: 0.638352
-        Y: 0.0411153
-        Z: 1.08108
+        X: 0.614996
+        Y: 0.00393768
+        Z: 1.08237
       Maintain Vertical Axis: true
       Mouse Enabled: true
       Name: Current View
@@ -1275,9 +1284,9 @@ Visualization Manager:
       Target Frame: <Fixed Frame>
       Transition Time: 0.5
       Up:
-        X: 0.0157552
-        Y: 0.000814397
-        Z: 0.999876
+        X: 0.0137412
+        Y: 0.00252724
+        Z: 0.999902
       Value: Animated (rviz_animated_view_controller)
     Saved: ~
 Window Geometry:
@@ -1306,5 +1315,5 @@ Window Geometry:
   Views:
     collapsed: false
   Width: 1871
-  X: 49
-  Y: 24
+  X: 41
+  Y: -3

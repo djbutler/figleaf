@@ -32,6 +32,11 @@
     name="publish_points_node" />
   <node
     if="$(arg mid)"
+    pkg="rviz_objdetect_caller"
+    type="publish_table_node"
+    name="publish_table_node" />
+  <node
+    if="$(arg mid)"
     pkg="figleaf_2d"
     type="slic_pixelate"
     name="slic_pixelate" />
@@ -55,6 +60,11 @@
     pkg="rviz_objdetect_caller"
     type="publish_boxes_node"
     name="publish_boxes_node" />
+  <node
+    if="$(arg box)"
+    pkg="rviz_objdetect_caller"
+    type="publish_table_node"
+    name="publish_table_node" />
 
   <!-- rosbag recording node. -j option is for compression. -->
   <node
