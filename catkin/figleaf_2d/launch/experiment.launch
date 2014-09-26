@@ -9,6 +9,11 @@
   <arg name="box" default="False" />
   <arg name="data_dir" /> <!-- Where to save rosbag data. -->
 
+  <!--machine name="c1" address="c1.cs.washington.edu" user="jstn">
+    <env name="ROBOT" value="pr2" />
+  </machine>
+  <include machine="c1" file="$(find pr2_interactive_manipulation)/launch/pr2_interactive_manipulation_robot.launch" /-->
+
   <!-- All conditions:
        1) Run Kinect MLD publisher (via Kinect Stream rviz plugin)
        2) Send /kinect_mld to robot_self_filter
@@ -96,8 +101,11 @@
       record -j -O $(arg data_dir)/$(arg user)_$(arg filter).bag
       pr2_marker_control_transparent/feedback
       rviz_camera_publisher/camera_pose
-      head_mount_kinect/rgb/image_rect_color
-      head_mount_kinect/depth_registered/image_rect" />
+      head_mount_kinect/rgb/image_color/compressed" />
+    <!--
+head_mount_kinect/rgb/image_rect_color
+      head_mount_kinect/depth_registered/image_rect
+      -->
 
   <!-- Launches pr2_interactive_manipulation frontend with one of the
        figleaf_2d config files: {clean, blur, box}.rviz -->
