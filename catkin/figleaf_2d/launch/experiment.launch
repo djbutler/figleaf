@@ -21,7 +21,7 @@
     <param name="subsample_value" type="double" value=".02"/>
     <rosparam command="load" file="$(find pr2_arm_navigation_perception)/config/self_filter_right_left.yaml" />
   </node-->
-  <node pkg="robot_self_filter_color" type="self_filter_color" respawn="true" name="mld_self_filter_color">                                                           
+  <node pkg="robot_self_filter_color" type="self_filter_color" respawn="true" name="mld_self_filter_color">
     <remap from="cloud_in" to="/kinect_mld" />
     <remap from="cloud_out" to="/kinect_mld_filtered" />
     <!--param name="sensor_frame" type="string" value="/head_mount_kinect_rgb_optical_frame" /-->
