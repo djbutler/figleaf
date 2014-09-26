@@ -27,7 +27,7 @@
     <!--param name="sensor_frame" type="string" value="/head_mount_kinect_rgb_optical_frame" /-->
     <param name="sensor_frame" type="string" value="" />
     <param name="subsample_value" type="double" value=".005"/>                 
-    <rosparam command="load" file="$(find pr2_object_manipulation_launch)/config/object_modeling_self_filter.yaml" />
+    <rosparam command="load" file="$(find figleaf_2d)/config/object_modeling_self_filter.yaml" />
   </node>
 
   <!-- Blur condition: Node that blurs the Kinect image. -->
