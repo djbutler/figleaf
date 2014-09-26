@@ -14,6 +14,7 @@ Privacy tools for robotics.
   * object_manipulation_msgs
   * pr2_interactive_object_detection
   * sensor_msgs
+  * [scikit-image](http://scikit-image.org/download.html)
 
 **For UW CSE users**
 
@@ -37,7 +38,45 @@ For help setting up ROS, see https://sites.google.com/site/humancenteredrobotics
   rosmake
   ```
 
-3. Clone this repo to your home folder, ~/figleaf. Run scripts/install.py to create symbolic links in your catkin and rosbuild workspaces. Run `catkin_make` in your catkin workspace.
+3. Install scikit-image:
+   ```sudo pip install -U scikit-image```
+
+4. Clone this repo to your home folder, ~/figleaf. Run scripts/install.py to create symbolic links in your catkin and rosbuild workspaces. Run `catkin_make` in your catkin workspace.
+
+5. Optional: make the tabletop segmenter work on self-filtered point clouds. Solution for now: on the robot, run
+   ```sudo vim /opt/ros/groovy/stacks/pr2_object_manipulation/applications/pr2_interactive_object_detection/launch/pr2_interactive_object_detection_robot.launch```
+   
+   Change tabletop_segmentation_points_inputs from `$(arg kinect_camera_name)/depth_registered/points` to `$(arg kinect_camera_name)/rgb/object_modeling_points_filtered`.
+
+   Before:
+   ```
+   <!-- Launch default tabletop detector -->
+    <include unless="$(arg cvfh)" file="$(find tabletop_object_detector)/launch/tabletop_complete.launch">
+      <arg name="tabletop_segmentation_points_input" value="$(arg kinect_camera_name)/depth_registered/points"/>
+      <arg name="flatten_table" value="$(arg flatten_table)"/>  
+      <arg name="model_set" value="$(arg model_set)"/> 
+    </include>
+
+    <!-- Launch CVFH -->
+    <include if="$(arg cvfh)" file="$(find tabletop_vfh_cluster_detector)/launch/tabletop_complete.launch">
+      <arg name="tabletop_segmentation_points_input" value="$(arg kinect_camera_name)/depth_registered/points"/>
+      <arg name="flatten_table" value="$(arg flatten_table)"/>  
+    </include>
+    ```
+    To:
+    ```
+    <include unless="$(arg cvfh)" file="$(find tabletop_object_detector)/launch/tabletop_complete.launch">
+      <!--/head_mount_kinect/rgb/object_modeling_points_filtered-->
+      <arg name="tabletop_segmentation_points_input" value="$(arg kinect_camera_name)/rgb/object_modeling_points_filtered"/>
+      <arg name="flatten_table" value="$(arg flatten_table)"/>
+      <arg name="model_set" value="$(arg model_set)"/>
+    </include>
+    
+    <include if="$(arg cvfh)" file="$(find tabletop_vfh_cluster_detector)/launch/tabletop_complete.launch">
+      <arg name="tabletop_segmentation_points_input" value="$(arg kinect_camera_name)/rgb/object_modeling_points_filtered"/>
+      <arg name="flatten_table" value="$(arg flatten_table)"/>
+    </include>
+    ```
 
 **Running the experiment**
 
