@@ -4,10 +4,12 @@ roslib.load_manifest('figleaf_2d')
 import sys
 import rospy
 import cv2
+import cv
 from std_msgs.msg import String
 from sensor_msgs.msg import Image
 from cv_bridge import CvBridge, CvBridgeError
 import random
+import numpy as np
 
 import message_filters2
 import image_filtering as filt
@@ -46,8 +48,8 @@ class image_converter:
     if self.skipped == 2:
         print('  processing')
 
-#        cv_out_image = filt.slic(cv_image, sigma=3, compactness=15, n_segments=400)
-        cv_out_image = filt.slic(cv_depth, sigma=3, compactness=15, n_segments=400)
+        cv_out_image = filt.slic(cv_image, sigma=3, compactness=15, n_segments=400)
+        cv_out_image[np.squeeze(np.logical_or(np.isnan(cv_depth), cv_depth < .7))] = 0
         
 #        cv_image2 = filt.inverted_hue_of_slic_of_gaussian(cv_image)
         self.skipped = 0
@@ -55,7 +57,7 @@ class image_converter:
         cv2.imshow("Image window", cv_out_image)
         cv2.waitKey(3)
         try:
-            self.image_pub.publish(self.bridge.cv2_to_imgmsg(cv_out_image, "bgr8"))
+            self.image_pub.publish(self.bridge.cv2_to_imgmsg(cv_out_image, "passthrough"))
         except CvBridgeError, e:
             print e
     else:
