@@ -2,7 +2,9 @@
   <arg name="user" /> <!-- User name or ID -->
   <!-- Type of filter to use. "filter" is used for naming the rosbag. "clean",
        "box", etc. turn the appropriate features on or off. -->
+  <arg name="flight" />
   <arg name="filter" />
+  <arg name="task" />
   <arg name="clean" default="False" />
   <arg name="blur" default="False" />
   <arg name="mid" default="False" />
@@ -98,7 +100,7 @@
     type="record"
     name="rosbag_record_exp"
     args="
-      record -j -O $(arg data_dir)/$(arg user)_$(arg filter).bag
+      record -j -O $(arg data_dir)/user$(arg user)_$(arg flight)_$(arg filter)_$(arg task).bag
       pr2_marker_control_transparent/feedback
       rviz_camera_publisher/camera_pose
       head_mount_kinect/rgb/image_color/compressed" />
