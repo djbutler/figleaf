@@ -95,7 +95,9 @@ In 014, shut off the right light switch.
 
 On the robot, run interactive manipulation: `roslaunch pr2_interactive_manipulation pr2_interactive_manipulation_robot.launch`
 
-On the workstation, run `scripts/experiment.sh 123 clean`, where 123 is the user ID, and "clean" is the filter to use. The filters are:
+On the workstation, go to the scripts directory and run `python all.py 123`, where 123 is the user ID (an integer). It will automatically pick a permutation of the filters to run through. To proceed through the tutorial and experiments, press 'y'. To skip something, press 'n'.
+
+The filters are:
 * *clean*: No filters at all
 * *mid*: A superpixel and hue-inverted image + point cloud of only segmented objects
 * *box*: A filter where segmented objects are shown as boxes.
