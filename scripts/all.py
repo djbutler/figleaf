@@ -10,7 +10,7 @@ conditions = ['clean', 'mid', 'box']
 permutations = [x for x in itertools.permutations(conditions)]
 
 # User IDs start from 1.
-conditions = permutations[user_id-1 % len(permutations)]
+conditions = permutations[(user_id-1) % len(permutations)]
 
 def confirm(action, callback):
     confirmation = None

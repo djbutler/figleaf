@@ -10,5 +10,7 @@
   <include file="$(find
     pr2_interactive_manipulation_frontend)/launch/pr2_interactive_manipulation_desktop.launch">
     <arg name="rviz_config_file_base" value="$(find figleaf_2d)/config/tutorial.rviz" />
+    <env name="ROBOT" value="pr2" />
+    <env name="ROS_ENV_LOADER" value="/opt/ros/groovy/env.sh" />
   </include>
 </launch>
